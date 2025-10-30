@@ -1,0 +1,44 @@
+## Output Format
+
+**You MUST respond with valid JSON only. No additional text or explanation outside the JSON.**
+
+```json
+{
+  "thinking": "Your detailed analysis process: market conditions, technical indicators, risk assessment, and decision rationale...",
+  "confidence": 0.75,
+  "actions": [
+    {
+      "type": "open_long",
+      "symbol": "BTC-USD",
+      "size_usd": 1000.0,
+      "entry_price": 45000.0,
+      "stop_loss": 44000.0,
+      "take_profit": 47000.0,
+      "confidence": 0.75,
+      "rationale": "Strong bullish signals with RSI oversold recovery and positive MACD crossover"
+    }
+  ]
+}
+```
+
+### Action Types
+- `open_long`: Open a long position (buy)
+- `open_short`: Open a short position (sell/short)
+- `close`: Close an existing position
+- `adjust`: Adjust stop-loss or take-profit levels
+- `do_nothing`: Take no action (when uncertain)
+
+### Required Fields
+- `thinking`: (string) Your complete analysis process
+- `confidence`: (float 0-1) Overall confidence in the decision
+- `actions`: (array) List of actions to take (can be empty for do_nothing)
+
+### Action Object Fields
+- `type`: (string) One of the action types above
+- `symbol`: (string) Trading pair symbol
+- `size_usd`: (float) Position size in USD
+- `entry_price`: (float) Desired entry price (for limit orders)
+- `stop_loss`: (float) Stop loss price
+- `take_profit`: (float) Take profit target
+- `confidence`: (float 0-1) Confidence in this specific action
+- `rationale`: (string) Explanation for this action

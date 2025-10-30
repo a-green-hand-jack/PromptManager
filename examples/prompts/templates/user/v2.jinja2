@@ -1,0 +1,43 @@
+## Current Market Observation
+
+**Symbol**: {{ symbol }}
+**Current Price**: ${{ current_price }}
+**Timestamp**: {{ current_date }}
+
+### Technical Indicators
+{% if rsi is not none %}
+- **RSI (14)**: {{ rsi }}
+  {% if rsi > 70 %}⚠️ Overbought condition{% elif rsi < 30 %}⚠️ Oversold condition{% endif %}
+{% endif %}
+
+{% if macd is not none %}
+- **MACD**: {{ macd }}
+  {% if macd > 0 %}📈 Bullish momentum{% else %}📉 Bearish momentum{% endif %}
+{% endif %}
+
+{% if volume_24h is not none %}
+- **24h Volume**: ${{ volume_24h | round(2) }}
+{% endif %}
+
+{% if bollinger_upper is defined and bollinger_lower is defined %}
+- **Bollinger Bands**: Upper: ${{ bollinger_upper }}, Lower: ${{ bollinger_lower }}
+{% endif %}
+
+### Account Status
+{% if account_balance is defined %}
+- **Available Balance**: ${{ account_balance }}
+{% endif %}
+
+{% if positions is defined and positions|length > 0 %}
+### Open Positions
+{% for position in positions %}
+- **{{ position.symbol }}** ({{ position.side }}): Size: ${{ position.size_usd }}, Entry: ${{ position.entry_price }}, Current P&L: {{ position.pnl_pct }}%
+{% endfor %}
+{% else %}
+### Open Positions
+No open positions currently.
+{% endif %}
+
+---
+
+**Task**: Analyze the above market data and provide your trading decision in the required JSON format.

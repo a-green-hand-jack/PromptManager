@@ -1,0 +1,115 @@
+metadata:
+  name: trading_agent
+  description: "AI trading agent with risk management and portfolio optimization"
+  author: "Trading Team"
+  created_at: "2025-01-15"
+  updated_at: "2025-10-30"
+  tags: ["trading", "portfolio", "risk-management"]
+  current_version: "v2"
+
+parameters:
+  # Trading parameters
+  symbol:
+    type: str
+    required: true
+    description: "Trading pair symbol (e.g., BTC-USD)"
+
+  current_price:
+    type: float
+    required: true
+    description: "Current market price"
+
+  # Risk management parameters
+  risk_cap_pct:
+    type: float
+    required: false
+    default: 0.02
+    description: "Maximum risk per trade as percentage of portfolio"
+
+  max_portfolio_risk_pct:
+    type: float
+    required: false
+    default: 0.10
+    description: "Maximum total portfolio risk percentage"
+
+  min_confidence:
+    type: float
+    required: false
+    default: 0.65
+    description: "Minimum confidence threshold for taking action"
+
+  # Trading constraints
+  max_actions:
+    type: int
+    required: false
+    default: 3
+    description: "Maximum number of actions per decision"
+
+  max_new_positions:
+    type: int
+    required: false
+    default: 1
+    description: "Maximum number of new positions to open"
+
+  spread_bps_limit:
+    type: float
+    required: false
+    default: 5.0
+    description: "Maximum spread in basis points"
+
+  # Fee parameters
+  maker_fee_bps:
+    type: float
+    required: false
+    default: 2.0
+    description: "Maker fee in basis points"
+
+  taker_fee_bps:
+    type: float
+    required: false
+    default: 5.0
+    description: "Taker fee in basis points"
+
+  # Behavioral parameters
+  inactivity_bias:
+    type: str
+    required: false
+    default: "prefer_do_nothing_when_uncertain"
+    description: "Behavior when uncertain"
+
+  # Date parameter
+  current_date:
+    type: str
+    required: false
+    default: null
+    description: "Current date (auto-generated if not provided)"
+
+  # Market data (for user prompt)
+  rsi:
+    type: float
+    required: false
+    default: null
+    description: "Relative Strength Index"
+
+  macd:
+    type: float
+    required: false
+    default: null
+    description: "MACD indicator"
+
+  volume_24h:
+    type: float
+    required: false
+    default: null
+    description: "24-hour trading volume"
+
+llm_config:
+  model: "gpt-4"
+  temperature: 0.3
+  max_tokens: 2000
+  response_format:
+    type: "json_object"
+
+includes:
+  - common/risk_management
+  - common/json_schema

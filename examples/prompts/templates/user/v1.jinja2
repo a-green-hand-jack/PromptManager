@@ -1,0 +1,17 @@
+## Current Market Observation
+
+**Symbol**: {{ symbol }}
+**Current Price**: ${{ current_price }}
+
+{% if rsi is not none %}
+### Technical Indicators
+- RSI: {{ rsi }}
+{% endif %}
+
+{% if macd is not none %}
+- MACD: {{ macd }}
+{% endif %}
+
+---
+
+Please analyze this market data and provide your trading decision.

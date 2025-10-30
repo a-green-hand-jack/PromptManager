@@ -1,0 +1,35 @@
+## Risk Management Rules
+
+### Position Sizing
+- Maximum risk per trade: {{ risk_cap_pct }}% of portfolio value
+- Maximum total portfolio risk: {{ max_portfolio_risk_pct }}%
+- Position size must be calculated based on stop-loss distance
+
+### Risk Limits
+- Minimum confidence threshold: {{ min_confidence }} (0-1 scale)
+- Maximum number of actions per decision: {{ max_actions }}
+- Maximum new positions to open: {{ max_new_positions }}
+
+### Circuit Breakers
+{% if max_drawdown_pct is defined %}
+- Daily drawdown limit: {{ max_drawdown_pct }}%
+{% endif %}
+{% if consecutive_loss_limit is defined %}
+- Consecutive loss limit: {{ consecutive_loss_limit }} trades
+{% endif %}
+- Spread limit: {{ spread_bps_limit }} basis points
+
+### Trading Costs
+- Maker fee: {{ maker_fee_bps }} basis points (use limit orders when possible)
+- Taker fee: {{ taker_fee_bps }} basis points (market orders)
+- **Always account for fees in profit calculations**
+
+### Decision Policy
+{% if inactivity_bias == "prefer_do_nothing_when_uncertain" %}
+- **Default to NO ACTION when uncertain**
+- Only trade when you have high confidence (≥{{ min_confidence }})
+- Doing nothing is often the best decision
+{% else %}
+- Take calculated risks when opportunity presents itself
+- Balance action with caution
+{% endif %}
