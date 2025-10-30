@@ -1,0 +1,16 @@
+metadata:
+  name: agent_name
+  description: "Brief description of what this prompt does"
+  current_version: "v1"
+
+parameters:
+  # Add your required parameters here
+  input_text:
+    type: str
+    required: true
+    description: "Main input parameter"
+
+llm_config:
+  model: "gpt-4"
+  temperature: 0.7
+  max_tokens: 1000

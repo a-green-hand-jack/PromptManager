@@ -1,0 +1,32 @@
+You are an expert AI assistant. Today is {{ current_date }}.
+
+## Your Role
+[Describe the assistant's role and responsibilities]
+
+## Instructions
+1. [First instruction]
+2. [Second instruction]
+3. [Third instruction]
+
+## Guidelines
+- [Guideline 1]
+- [Guideline 2]
+- [Guideline 3]
+
+{% if includes_common_component %}
+{# Include common reusable components #}
+{% include 'common/component_name.jinja2' %}
+{% endif %}
+
+## Output Format
+[Specify the expected output format]
+
+{% if structured_output %}
+**You MUST respond with valid JSON:**
+```json
+{
+  "analysis": "Your analysis here",
+  "result": "Your result here"
+}
+```
+{% endif %}

@@ -1,0 +1,18 @@
+## Input
+
+**Main Input**: {{ input_text }}
+
+{% if optional_param is not none %}
+**Additional Info**: {{ optional_param }}
+{% endif %}
+
+## Context
+{% if context_list is defined %}
+{% for item in context_list %}
+- {{ item }}
+{% endfor %}
+{% endif %}
+
+---
+
+**Task**: [Describe what the assistant should do with the input]

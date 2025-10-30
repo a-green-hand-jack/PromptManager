@@ -1,0 +1,56 @@
+metadata:
+  name: agent_name
+  description: "Comprehensive description of what this agent/prompt does"
+  author: "Your Name"
+  created_at: "2025-01-01"
+  updated_at: "2025-01-01"
+  tags: ["tag1", "tag2", "tag3"]
+  current_version: "v1"
+
+parameters:
+  # String parameters
+  input_text:
+    type: str
+    required: true
+    description: "Main input text"
+
+  # Numeric parameters
+  threshold:
+    type: float
+    required: false
+    default: 0.7
+    description: "Decision threshold (0-1)"
+
+  max_items:
+    type: int
+    required: false
+    default: 10
+    description: "Maximum number of items to process"
+
+  # Boolean parameters
+  verbose:
+    type: bool
+    required: false
+    default: false
+    description: "Enable verbose output"
+
+  # Date parameter (auto-generated if not provided)
+  current_date:
+    type: str
+    required: false
+    default: null
+    description: "Current date (auto-generated)"
+
+llm_config:
+  model: "gpt-4"
+  temperature: 0.7
+  max_tokens: 2000
+  response_format:
+    type: "json_object"  # Optional: for structured output
+
+includes:
+  - common/instructions  # Optional: reference to common templates
+  - common/output_format
+
+# Optional: Configuration inheritance
+# extends: "parent_agent"  # Inherit from another config

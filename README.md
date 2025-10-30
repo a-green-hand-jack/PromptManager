@@ -7,7 +7,7 @@
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[Features](#-features) • [Installation](#-installation) • [Quick Start](#-quick-start) • [Documentation](#-documentation) • [Examples](#-examples)
+[Features](#-features) • [Installation](#-installation) • [Claude Code Skill](#-claude-code-skill) • [Quick Start](#-quick-start) • [Documentation](#-documentation) • [Examples](#-examples)
 
 </div>
 
@@ -72,6 +72,50 @@ pip install -e .
 ```bash
 pip install -e ".[dev]"
 ```
+
+---
+
+## 🤖 Claude Code Skill
+
+**Want to use this with Claude Code? We've got you covered!**
+
+This project includes a Claude Code skill that helps you set up and manage prompts interactively.
+
+### Installing the Skill
+
+**Option 1: Personal Skill (available in all your projects)**
+```bash
+mkdir -p ~/.claude/skills
+cp -r .claude/skills/prompt-manager ~/.claude/skills/
+```
+
+**Option 2: Project Skill (share with your team)**
+```bash
+# Already included in this repo at .claude/skills/prompt-manager/
+# Just commit it to share with your team
+git add .claude/skills
+git commit -m "Add prompt-manager skill"
+```
+
+### Using the Skill
+
+Simply ask Claude naturally:
+- "Set up prompt management for my AI agent"
+- "Create a new prompt for my trading bot"
+- "Help me version my prompts"
+- "I need a reusable prompt component"
+
+Claude will automatically:
+- ✅ Create proper directory structure
+- ✅ Generate YAML configs with your parameters
+- ✅ Create Jinja2 templates
+- ✅ Provide integration code
+- ✅ Create test scripts
+
+**Documentation:**
+- [Skill README](.claude/skills/prompt-manager/README.md) - Comprehensive guide
+- [Quick Reference](.claude/skills/prompt-manager/QUICK_REFERENCE.md) - Cheat sheet
+- [Installation Guide](.claude/skills/prompt-manager/INSTALLATION.md) - Setup options
 
 ---
 
